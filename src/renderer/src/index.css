@@ -1,0 +1,218 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, 'Segoe UI', Inter, Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #f4f4f2;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #1e1e22;
+  color: #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  gap: 12px;
+}
+
+.sidebar__brand {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  padding: 0 4px;
+  color: #f2f2f2;
+}
+
+.sidebar__open-btn {
+  background: #3a63f0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sidebar__open-btn:hover {
+  background: #2f52d1;
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.sidebar__item {
+  background: transparent;
+  border: none;
+  color: #c7c7cc;
+  text-align: left;
+  padding: 7px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__item:hover {
+  background: #2a2a30;
+}
+
+.sidebar__item.is-active {
+  background: #33333c;
+  color: #ffffff;
+}
+
+.app__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e2;
+}
+
+.toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toolbar__group--right {
+  margin-left: auto;
+}
+
+.toolbar__btn {
+  background: #f0f0ee;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #2a2a2a;
+}
+
+.toolbar__btn:hover:not(:disabled) {
+  background: #e6e6e3;
+}
+
+.toolbar__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.toolbar__btn.is-active {
+  background: #3a63f0;
+  color: white;
+}
+
+.toolbar__swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.toolbar__swatch.is-active {
+  border-color: #2a2a2a;
+}
+
+.app__content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.app__viewer {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.app__empty {
+  margin: auto;
+  color: #8a8a86;
+  font-size: 14px;
+}
+
+.pdf-page {
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+.pdf-page__base,
+.pdf-page__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pdf-page__overlay {
+  cursor: crosshair;
+}
+
+.notes-panel {
+  width: 340px;
+  flex-shrink: 0;
+  border-left: 1px solid #e4e4e2;
+  background: #fbfbfa;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-panel__header {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a4a48;
+  border-bottom: 1px solid #e4e4e2;
+}
+
+.notes-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.notes-panel__body .ProseMirror {
+  outline: none;
+  min-height: 100%;
+}
