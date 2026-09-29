@@ -5,11 +5,26 @@ directories:
   output: dist
 files:
   - out/**/*
+  - resources/icon.png
   - package.json
+# The window icon is loaded from disk, so keep it outside the asar archive
+asarUnpack:
+  - resources/**
+# The UI is English-only, so skip Chromium's other 50+ locale packs
+electronLanguages:
+  - en-US
+  - en-GB
 win:
   target: nsis
-  artifactName: ${productName}-${version}-setup.${ext}
-  signAndEditExecutable: false
+  icon: resources/icon.ico
+  # Stable name so https://github.com/imaadhusoof/Inkwell/releases/latest/download/Inkwell-Setup.exe always works
+  artifactName: ${productName}-Setup.${ext}
 nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Inkwell
+  installerIcon: resources/icon.ico
+  uninstallerIcon: resources/icon.ico
+  uninstallDisplayName: Inkwell

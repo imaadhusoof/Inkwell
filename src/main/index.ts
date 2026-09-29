@@ -16,6 +16,7 @@ import {
   type RecentFile,
   type ViewState
 } from './storage'
+import icon from '../../resources/icon.png?asset'
 
 const TITLE_BAR_HEIGHT = 44
 
@@ -35,6 +36,7 @@ function createWindow(): void {
     show: false,
     backgroundColor: THEME_COLORS.light.background,
     autoHideMenuBar: true,
+    icon,
     // Custom title bar so document tabs can sit in it, like most modern PDF apps
     titleBarStyle: 'hidden',
     ...(process.platform === 'darwin'
