@@ -1,4 +1,5 @@
-export type ToolId = 'pen' | 'highlighter' | 'eraser'
+export type InkTool = 'pen' | 'highlighter'
+export type ToolId = 'select' | 'hand' | InkTool | 'eraser'
 
 export interface StrokePoint {
   x: number
@@ -6,9 +7,10 @@ export interface StrokePoint {
   pressure: number
 }
 
+/** A freehand stroke, stored in PDF page space (points at 100% zoom) so it's zoom-independent. */
 export interface Stroke {
   id: string
-  tool: 'pen' | 'highlighter'
+  tool: InkTool
   color: string
   size: number
   opacity: number
@@ -27,4 +29,15 @@ export interface DocumentAnnotations {
 
 export function emptyDocumentAnnotations(): DocumentAnnotations {
   return { pages: {} }
+}
+
+export interface PenSettings {
+  color: string
+  size: number
+}
+
+export interface ToolSettings {
+  tool: ToolId
+  pen: PenSettings
+  highlighter: PenSettings
 }

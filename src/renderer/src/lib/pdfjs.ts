@@ -4,4 +4,4 @@ import workerSrc from 'pdfjs-dist/build/pdf.worker.mjs?url'
 pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc
 
 export { pdfjsLib }
-export type { PDFDocumentProxy, PDFPageProxy } from 'pdfjs-dist'
+export type { PDFDocumentProxy, PDFPageProxy, RenderTask } from 'pdfjs-dist'
