@@ -54,9 +54,14 @@ function createWindow(): void {
     }
   })
 
-  mainWindow.on('ready-to-show', () => {
-    mainWindow?.show()
-  })
+  // On Windows, 'ready-to-show' never fires for a hidden window with titleBarOverlay,
+  // so also show it once the page has loaded (or failed to) rather than staying invisible
+  const showWindow = (): void => {
+    if (mainWindow && !mainWindow.isVisible()) mainWindow.show()
+  }
+  mainWindow.once('ready-to-show', showWindow)
+  mainWindow.webContents.once('did-finish-load', showWindow)
+  mainWindow.webContents.once('did-fail-load', showWindow)
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
